@@ -2,19 +2,18 @@
 <openerp>
     <data>
 
-      <record id="ideas_daily_sales_report_view" model="ir.ui.view">
-          <field name="name">Daily Sales Report</field>
-          <field name="model">daily.sales.report</field>
+      <record id="print_products_labels_view" model="ir.ui.view">
+          <field name="name">print.products.labels.form</field>
+          <field name="model">print.products.labels</field>
           <field name="arch" type="xml">
-              <form string="Report Options">
+              <form string="Print Products Labels">
                   <group col="4">
-                      <field name="warehouse_id" widget="radio"/>
-                      <field name="date"/>
+                      <field name="line_ids" nolabel="1" />
                   </group>
                   <footer>
                       <button
-                          name="print_daily_sales_report"
-                          string="Print"
+                          name="print_products_labels"
+                          string="Print Products Labels"
                           type="object"
                           default_focus="1"
                           class="oe_highlight"/>
@@ -25,12 +24,12 @@
           </field>
       </record>
 
-      <record id="action_ideas_daily_sales_report_menu" model="ir.actions.act_window">
-          <field name="name">Daily Sales Report</field>
-          <field name="res_model">daily.sales.report</field>
+      <record id="action_print_products_labels" model="ir.actions.act_window">
+          <field name="name">Print Products Labels</field>
+          <field name="res_model">print.products.labels</field>
           <field name="view_type">form</field>
           <field name="view_mode">form</field>
-          <field name="view_id" ref="ideas_daily_sales_report_view"/>
+          <field name="view_id" ref="print_products_labels_view"/>
           <field name="target">new</field>
       </record>
 

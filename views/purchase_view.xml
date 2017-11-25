@@ -2,33 +2,20 @@
 <openerp>
     <data>
 
-        <record id="view_res_partner_filter_delivery_currier" model="ir.ui.view">
-            <field name="name">res.partner.select.delivery.currier</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <record id="purchase_order_form_products_labels" model="ir.ui.view">
+            <field name="name">purchase.order.form.products.labels</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
             <field name="arch" type="xml">
-                <filter name="supplier" position="after">
-                    <field name="delivery_currier" />
-                    <filter
-                      string="Delivery Currier"
-                      name="groupby_delivery_currier"
-                      domain="[('supplier','=',1), ('parent_id', '=', False)]"
-                      context="{'group_by' : 'delivery_currier'}"/>
-                    <separator/>
-                </filter>
-            </field>
-        </record>
 
-        <record id="view_partner_form_delivery_currier" model="ir.ui.view">
-            <field name="name">res.partner.form.delivery.currier</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form" />
-            <field name="arch" type="xml">
-                <field name="company_id" position="after"  >
-                    <field
-                      name="delivery_currier"
-                      attrs="{'invisible': [('supplier', '=', False)]}" />
-                </field>
+              <xpath expr="//header" position="inside">
+                <button
+                  name="%(action_print_products_labels)d"
+                  type="action"
+                  string="Print Products Labels"
+                  states="purchase" />
+              </xpath>
+
             </field>
         </record>
 

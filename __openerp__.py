@@ -11,7 +11,8 @@
     'license': 'AGPL-3',
     'depends': ['purchase', ],
     'data': [
-        #'views/purchase_view.xml',        
+        'wizard/print_products_labels_view.xml',
+        'views/purchase_view.xml',
     ],
     'installable': True,
     'auto_install': False
