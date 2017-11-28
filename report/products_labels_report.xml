@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="products_labels_report"
+            string="Report Products Labels"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="purchase_order_products_labels.products_labels"
+            name="purchase_order_products_labels.products_labels"
+        />
+
+    </data>
+</openerp>

@@ -11,6 +11,8 @@
     'license': 'AGPL-3',
     'depends': ['purchase', ],
     'data': [
+        'report/products_labels_report.xml',
+        'report/products_labels_report_templates.xml',
         'wizard/print_products_labels_view.xml',
         'views/purchase_view.xml',
     ],

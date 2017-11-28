@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="products_labels">
+            <t t-call="report.html_container">
+                <t
+                    t-call="purchase_order_products_labels.products_labels_document"
+                    t-lang="user.partner_id.lang"/>
+            </t>
+        </template>
+
+        <!-- Translatable template -->
+        <template id="products_labels_document">
+            <t t-set="docs" t-value="docs.with_context({'lang':user.partner_id.lang})" />
+
+            <t t-call="report.external_layout" t-foreach="docs[0].order_line" t-as="line">
+
+                <div class="page">
+
+                  <strong>Date:</strong>
+                  <span t-field="docs[0].date_order" />
+
+                </div>
+
+            </t>
+
+        </template>
+
+    </data>
+</openerp>
