@@ -19,5 +19,13 @@
             </field>
         </record>
 
+        <record model="ir.values" id="wizard_wizard_print_product_label">
+          <field name="name">Print Product Label</field>
+          <field name="key">action</field>
+          <field name="key2">client_action_multi</field>
+          <field name="model">purchase.order</field>
+          <field name="value" eval="'ir.actions.act_window,' + str(ref('printer_zpl2.action_wizard_print_record_label_view'))"/>
+        </record>
+
     </data>
 </openerp>

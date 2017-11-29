@@ -9,7 +9,15 @@
     'author': 'Humanytek',
     'website': "http://www.humanytek.com",
     'license': 'AGPL-3',
-    'depends': ['purchase', ],
+    'depends': [
+        'product',
+        'purchase',
+        'printer_zpl2',
+        'product_season',
+        'product_brand',
+        'product_style_concept',
+        'product_box',
+        ],
     'data': [
         'report/products_labels_report.xml',
         'report/products_labels_report_templates.xml',

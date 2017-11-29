@@ -13,12 +13,14 @@
         <!-- Translatable template -->
         <template id="products_labels_document">
             <t t-set="docs" t-value="docs.with_context({'lang':user.partner_id.lang})" />
+            <t t-set="line_ids" t-value="line_ids.with_context({'lang':user.partner_id.lang})" />
 
-            <t t-call="report.external_layout" t-foreach="docs[0].order_line" t-as="line">
+            <t t-call="report.external_layout" t-foreach="line_ids" t-as="line">
 
                 <div class="page">
 
                   <strong>Date:</strong>
+                  <span t-field="line.product_id.name" />
                   <span t-field="docs[0].date_order" />
 
                 </div>
