@@ -13,6 +13,8 @@
                         <tree editable="bottom" create="0">
                           <field  name="product_id" />
                           <field  name="product_qty" />
+                          <field  name="attribute_id" />
+                          <field  name="attribute_value" />
                         </tree>
                       </field>
                   </group>

@@ -18,10 +18,25 @@ class PrintProductsLabels(models.TransientModel):
         value = list()
 
         for line in purchase.order_line:
+
+            attribute_id = False
+            if line.product_id.attribute_value_ids:
+                attribute_id = \
+                    line.product_id.attribute_value_ids[0].attribute_id.id
+
+            attribute_value = False
+            if attribute_id and line.product_id.attribute_value_ids:
+
+                attribute_value = \
+                    line.product_id.attribute_value_ids.filtered(
+                        lambda av: av.attribute_id.id == attribute_id).name
+
             value.append(
                 (0, 0,
                  {'product_id': line.product_id.id,
                   'product_qty': line.product_qty,
+                  'attribute_id': attribute_id,
+                  'attribute_value': attribute_value,
                  })
             )
 
@@ -113,3 +128,17 @@ class ProductLabelLine(models.TransientModel):
     product_qty = fields.Float('Quantity', required=True)
     products_labels_wizard_id = fields.Many2one(
         'print.products.labels', 'Wizard of Products Labels', required=True)
+    attribute_id = fields.Many2one(
+        'product.attribute', 'Attribute to show in label', required=True)
+    attribute_value = fields.Char(
+        'Value of attribute to show', readonly=True, required=True)
+
+    @api.onchange('attribute_id')
+    def onchange_attribute_id(self):
+        """Computes event onchange on field attribute_id"""
+
+        if self.attribute_id and self.product_id.attribute_value_ids:
+
+            self.attribute_value = \
+                self.product_id.attribute_value_ids.filtered(
+                    lambda av: av.attribute_id == self.attribute_id).name
